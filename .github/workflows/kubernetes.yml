@@ -31,6 +31,4 @@ jobs:
         #script à exécuter
         script: |
          cd project
-         rm -rf cv-web
-         git clone https://github.com/mohummadpeer13/cv-web.git
          ./script.sh
