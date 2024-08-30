@@ -1,0 +1,32 @@
+# Nom de votre Github Actions
+name: Launch script on VM 
+
+# Triggers ou déclencheurs
+# Lors d'un push sur la branch main
+on:
+  push:
+    branches: [ "main" ]
+
+# Déclenchement des jobs lors d'un push
+jobs:
+
+  # Etape 1: se connecte en ssh et créer un répertoire
+  create-folder:
+    name: create-folder
+    runs-on: ubuntu-latest
+  
+    steps:
+  
+      # Action 1
+    - name: Create folder on remote VM
+      uses: appleboy/ssh-action@v1.0.3
+
+      # Rajouter les secrets dans settings => secrets and variables
+      with:
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USERNAME }}
+        password: ${{ secrets.PASSWORD }}
+        port: ${{ secrets.PORT }}
+        
+        #script à exécuter
+        script: mkdir -p toto
